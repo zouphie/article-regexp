@@ -1,0 +1,50 @@
+{
+  "name": "article-regexp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --config webpack.config.js --mode development",
+    "build": "webpack --config webpack.config.js --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SophieDaringer/article-regexp.git"
+  },
+  "author": "Sophie Daringer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SophieDaringer/article-regexp/issues"
+  },
+  "homepage": "https://github.com/SophieDaringer/article-regexp#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/node": "^7.8.4",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.6",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.4.2",
+    "handlebars": "^4.7.3",
+    "handlebars-loader": "^1.7.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.13.1",
+    "node-sass-glob-importer": "^5.3.2",
+    "sass-loader": "^8.0.2",
+    "sass-resources-loader": "^2.0.1",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.8.4",
+    "navigo": "^7.1.2",
+    "universal-router": "^8.3.0",
+    "verbal-expressions": "^1.0.2",
+    "xregexp": "^4.3.0"
+  }
+}

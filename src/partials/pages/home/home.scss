@@ -1,0 +1,15 @@
+.wrapper {
+    &__home {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        max-width: 75%;
+        margin: 5rem auto;
+    }
+    &__nav {
+        display: flex;
+        justify-content: center;
+        margin: 2rem;
+    }
+}

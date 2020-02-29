@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta|Rasa&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+  
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.body {
+    background-color: $isabelline;
+    color: $registration-black;
+    font-family: 'Mukta', sans-serif;
+}
+
+.button {
+    &--nav {
+        padding: 1rem;
+        margin: 1.5rem;
+    }
+    &--back {
+        margin: 1.5rem;
+    }
+    &--regex {
+        text-transform: none;
+        padding: 0.25rem;
+        margin: 0.125rem;
+    }
+    position: relative;
+    background: none;
+    border: solid 0.125rem $middle-blue;
+    color: $middle-blue;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    transition: all .4s linear;
+    &:hover {
+        cursor: pointer;
+        color: $yankees-blue;
+        &::before {
+            width: 100%;
+        }
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        background: $middle-blue;
+        width: 0;
+        height: 100%;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s linear;
+    }
+}

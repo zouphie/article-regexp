@@ -1,0 +1,15 @@
+# system
+.DS_Store
+
+# IDE
+.idea/
+.vscode
+
+# node.js
+node_modules/
+
+# build
+dist/
+
+#env
+.env
