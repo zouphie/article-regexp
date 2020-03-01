@@ -1,11 +1,13 @@
 var assert = require('assert');
 var should = require('should');
 
-describe('Array', function() {
-  describe('#indexOf()', function() {
-    it('should return -1 when the value is not present', function() {
-      assert.equal([1, 2, 3].indexOf(4), -1);
-    });
+
+describe('RegExp Test', function() {
+  it('should return true when regex match', function() {
+    assert.equal(new RegExp('11-\\d').test('11-2'), true);
+  });
+  it('should return false when regex doesn\'t match', function() {
+    assert.equal(new RegExp('[A-Z]{5}').test('HFWR1'), false);
   });
 });
 

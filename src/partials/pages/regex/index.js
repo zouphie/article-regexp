@@ -14,8 +14,6 @@ export default class RegexPage {
         const infobox = document.getElementById('info');
         const infobtn = document.getElementById('info-btn');
         const close = document.getElementById('close');
-        const content = document.getElementById('app');
-        const footer = document.getElementById('footer');
 
         infobtn.addEventListener('click', () => {
             infobox.style.display = 'block';
