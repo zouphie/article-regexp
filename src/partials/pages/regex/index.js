@@ -1,6 +1,5 @@
 import template from './regex.hbs';
 import './regex.scss';
-import VerEx from 'verbal-expressions';
 
 export default class RegexPage {
     constructor(root) {
@@ -11,16 +10,43 @@ export default class RegexPage {
         this.loadData();
     }
 
-    //TODO1: RegEx im Input Feld zusammen bauen
+    showInformation() {
+        const infobox = document.getElementById('info');
+        const infobtn = document.getElementById('info-btn');
+        const close = document.getElementById('close');
+        const content = document.getElementById('app');
+        const footer = document.getElementById('footer');
 
-    setAttributes(el, attrs) {
-        for(var key in attrs) {
-          el.setAttribute(key, attrs[key]);
+        infobtn.addEventListener('click', () => {
+            infobox.style.display = 'block';
+            infobox.style.width = '20%';
+        })
+
+        close.addEventListener('click', () => {
+            infobox.style.display = 'none';
+            infobox.style.width = '0';
+        })
+    }
+
+    checkValidExpression(displayname) {
+        try {
+            new RegExp(displayname);
+        } catch(e) {
+            alert('Please type in a valid Regular Expression!');
+            return;
         }
     }
 
-    buildRegEx() {
+    setInputAttribute(attr) {
         const input = document.getElementById('input');
+        let value = input.value;
+            if(value.length === 0) {
+                value = '';
+            }
+            input.value = value+attr;
+    }
+
+    buildRegEx() {
         const select = document.getElementById('limit');
         const buttons = document.querySelectorAll('.button--regex');
         const btnArr = Array.from(buttons);
@@ -28,29 +54,53 @@ export default class RegexPage {
 
         btn.addEventListener('click', () => {
             let limit = select.options[select.selectedIndex];
-            console.log(limit.text)
-            input.setAttribute('value', limit.text);
+            this.setInputAttribute(limit.text)
         })
 
 
         btnArr.forEach((btn) => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                input.setAttribute('value', btn.value);
+                this.setInputAttribute(btn.value)
             })
         }) 
     }
 
+    createListEl(text) {
+        const ul = document.getElementById('result-list');
+        const li = document.createElement('li');
+        li.className = 'result--elem';
+        li.textContent = text;
+        ul.appendChild(li);
+    }
+
+    iterateStorage() {
+        const data = JSON.parse(localStorage.getItem('items'));
+
+        data.forEach((item) => {
+            this.createListEl(item.displayname);
+        })
+    }
+
     createRegEx() {
-        const create = document.getElementById('create');
+        const form = document.getElementById('regex');
         const input = document.getElementById('input');
         const result = document.getElementById('result');
+        let itemsArr = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
 
-        create.addEventListener('click', (e) => {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
-            result.innerHTML = input.value;
-            Storage.setItem(input.value, input.value);
+            let displayname = '/'+input.value+'/';
+            this.checkValidExpression(displayname);
+
+            result.innerHTML = displayname;
+            itemsArr.push({'value': input.value, 'displayname': displayname});
+            localStorage.setItem('items', JSON.stringify(itemsArr));
+            this.createListEl(displayname);
+            input.value = '';
         })
+
+        this.iterateStorage();
     }
 
     async loadData() {
@@ -63,6 +113,6 @@ export default class RegexPage {
         this.root.innerHTML = this.template({ questions: this.data });
         this.buildRegEx();
         this.createRegEx();
-        this.setAttributes();
+        this.showInformation();
     }
 }

@@ -1,52 +1,62 @@
 <section class="wrapper">
     <a href="/" alt="go back to start" data-navigo><button class="button button--back">go back</button></a>
     <section class="wrapper__regex">
-        <h2 class="heading--two">Build a Regular Expression</h2>
+        <div class="wrapper__heading">
+            <h2 class="heading--two">Build a Regular Expression</h2>
+            <img src='./images/question.svg' alt="more Information" class="information--icon" id="info-btn">
+        </div>
+        <div id="info" class="information__text">
+            <span id="close" class="close">&times;</span>
+            <ul class="information__list">
+                <li class="information__list--elem"><strong>General Information</strong></li>
+                <li class="information__list--elem">Click on the different buttons to create a new Regular Expression or/and type it in the input field.</li>
+                <li class="information__list--elem">You don't have to put a slash before and behind the expression.</li>
+                <li class="information__list--elem"><strong>Example:</strong> for an article number with the pattern "11-1" you could choose 11-\d or for the pattern "HFKTD" you could choose [A-Z]{5}</li>
+                <li class="information__list--elem"><strong>Buttons</strong></li>
+                <li class="information__list--elem">'\d' stands for a number</li>
+                <li class="information__list--elem">'\w' stands for an alphanumeric symbol</li>
+                <li class="information__list--elem">'[A-Z]' stands for upper case letters</li>
+                <li class="information__list--elem">'[a-z]' stands for lower case letters</li>
+                <li class="information__list--elem">If you want to limit the signs choose a number from the select field.</li>
+            </ul>
+        </div>
+        <p>Please don't type in a slash before and behind the expression.</p>
         <form id="regex" class="regex--form">        
-            <label for="input" class="heading--form">Click on the different buttons to create a new Regular Expression or/and type it in the input field</label>
-            <p>i.e. for an article number with the pattern "11-1" you could choose /11-\d/ or for the pattern "HFKTD" you could choose /[A-Z]{5}/</p>
             <div class="build">
                 <div class="build--elem">
-                    <button id="numbers" class="button button--regex" value="/">/</button>
-                    <p>Begin and end the Regular Expression with '/'</p>
-                </div>
-                <div class="build--elem">
                     <button id="numbers" class="button button--regex" value="\d">\d</button>
-                    <p>'\d' stands for a number i.e. 1</p>
                 </div>
                 <div class="build--elem">
                     <button id="symbols" class="button button--regex" value="\w">\w</button>
-                    <p>'\w' stands for an alphanumeric symbol i.e. Example_1</p>
                 </div>
                 <div class="build--elem">
                     <button id="big" class="button button--regex" value="[A-Z]">[A-Z]</button>
-                    <p>'[A-Z]' stands for upper case letters i.e. EXAMPLE</p>
                 </div>
                 <div class="build--elem">
                     <button id="big" class="button button--regex" value="[a-z]">[a-z]</button>
-                    <p>'[a-z]' stands for lower case letters i.e. example</p>
                 </div>
                 <div class="build--elem">
-                    <select id="limit" name="limit">
+                    <select id="limit" class="select--limit" name="limit">
                         <option></option>
-                        <option value="1">{1}</option>
-                        <option value="2">{2}</option>
-                        <option value="3">{3}</option>
-                        <option value="4">{4}</option>
-                        <option value="5">{5}</option>
-                        <option value="6">{6}</option>
-                        <option value="7">{7}</option>
-                        <option value="8">{8}</option>
-                        <option value="9">{9}</option>
+                        <option class="select__opt" value="1">{1}</option>
+                        <option class="select__opt" value="2">{2}</option>
+                        <option class="select__opt" value="3">{3}</option>
+                        <option class="select__opt" value="4">{4}</option>
+                        <option class="select__opt" value="5">{5}</option>
+                        <option class="select__opt" value="6">{6}</option>
+                        <option class="select__opt" value="7">{7}</option>
+                        <option class="select__opt" value="8">{8}</option>
+                        <option class="select__opt" value="9">{9}</option>
                     </select>
                     <button id="limit-btn" class="button button--regex">OK</button>
-                    <p>If you want to limit the signs choose a number above.</p>
                 </div>
             </div>
             <input type="text" name="regex" id="input" placeholder="Regular Expression">
-            <button id="create" class="button">Create</button>
+            <button type="submit" id="create" class="button">Create</button>
             <label for="result" class="heading--form">Generated Regular Expression</label>
             <div id="result" class="result">No Regular Expression created</div>
         </form>
+        <h2 class="heading--two">Your Regular Expressions</h2>
+        <ul id="result-list" class="result__list"></ul>
     </section>
 </section>

@@ -66,6 +66,16 @@ module.exports = {
                     }
                 ]
             },
+            // compress and include images
+            {
+                test: /\.(png|svg|jpe?g|gif)$/,
+                loader: 'file-loader',
+                options:
+                {
+                    name: '[name].[ext]',
+                    outputPath: 'images',
+                },
+            }
         ]
     },
 
